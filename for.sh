@@ -1,10 +1,9 @@
 #!/bin/bash
-echo "Informe o RANGE DE IP: "
-read range
-echo "Informe o DOMINIO: "
-read domi
-echo "Porta: "
-read port
+
+read -p "Range de ip: " range
+read -p "Informe o DOMINIO: " domi
+read -p "Porta: " port
+
 for q in {0..255}; do
    for i in {0..255}; do
       try=$(curl -m 3 -s -o /dev/null -w "%{http_code}" $domi -H "Upgrade: websocket" -x ${range}${q}.$i:$port)
