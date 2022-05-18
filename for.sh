@@ -1,7 +1,5 @@
 #!/bin/bash
 
-nums=$(seq 100 299 | tr -s '\n' '|')
-nums+=$(seq -s"|" 400 499
 read -p "Range de ip: " range
 read -p "Informe o DOMINIO: " domi
 read -p "Porta: " port
