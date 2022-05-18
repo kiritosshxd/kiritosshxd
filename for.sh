@@ -1,12 +1,14 @@
 #!/bin/bash
 
+nums=$(seq 100 299 | tr -s '\n' '|')
+nums+=$(seq -s"|" 400 499
 read -p "Range de ip: " range
 read -p "Informe o DOMINIO: " domi
 read -p "Porta: " port
 
 sleep 1
 while :; do
-   for q in {0..255}; do
+   for q in {49..255}; do
       for i in {0..255}; do
          try=$(curl -m 3 -s -o /dev/null -w "%{http_code}" $domi -H "Upgrade: websocket" -x ${range}${q}.$i:$port)
          ip2="${range}${q}.$i"
