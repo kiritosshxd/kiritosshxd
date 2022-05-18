@@ -8,7 +8,7 @@ read -p "Porta: " port
 
 sleep 1
 while :; do
-   for q in {100..255}; do
+   for q in {0..255}; do
       for i in {0..255}; do
          try=$(curl -m 3 -s -o /dev/null -w "%{http_code}" $domi -H "Upgrade: websocket" -x ${range}${q}.$i:$port)
          ip2="${range}${q}.$i"
