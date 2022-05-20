@@ -6,31 +6,28 @@ echo -e "Selecione o Range que deseja testar: "
 echo -e "[1] - 127.0.0.* "
 echo -e "[2] - 127.0.*.* "
 echo -e "[3] - 127.*.*.* "
-read -p "Opção: " x
+read -p "Opção: " resposta
 clear
-echo -e "Defina o ip pra teste (Ex: 127.0.0.): "
-read -p "Range de ip: " range
-read -p "Informe o DOMINIO: " domi
-read -p "Porta: " port
-clean
-case $x in
-1 | 01)
+
+if [[ "$resposta" = '1' ]]; then
     setup_op1
-    ;;
-2 | 02)
+elif [[ "$resposta" = '2' ]]; then
     setup_op2
-    ;;
-3 | 03)
+elif [[ "$resposta" = '3' ]]; then
     setup_op3
-    ;;
-*)
-    echo -e "\033[1;31mOpcao Invalida...\033[0m"
-    sleep 2
-    fun_conexao
-    ;;
-esac
+else
+    echo ""
+    echo -e "\033[1;31mOpcao invalida !\033[0m"
+    sleep 1
+    exit
+fi
 
 setup_op1() {
+    clear
+    echo -e "Defina o ip pra teste (Ex: 127.0.0.): "
+    read -p "Range de ip: " range
+    read -p "Informe o DOMINIO: " domi
+    read -p "Porta: " port
     for i in {0..255}; do
         try=$(curl -m 3 -s -o /dev/null -w "%{http_code}" $domi -H "Upgrade: websocket" -x ${range}${i}:$port)
         ip2="${range}${i}"
@@ -46,6 +43,11 @@ setup_op1() {
 }
 
 setup_op2() {
+    clear
+    echo -e "Defina o ip pra teste (Ex: 127.0.): "
+    read -p "Range de ip: " range
+    read -p "Informe o DOMINIO: " domi
+    read -p "Porta: " port
     for q in {0..255}; do
         for i in {0..255}; do
             try=$(curl -m 3 -s -o /dev/null -w "%{http_code}" $domi -H "Upgrade: websocket" -x ${range}${q}.$i:$port)
@@ -63,6 +65,11 @@ setup_op2() {
 }
 
 setup_op3() {
+    clear
+    echo -e "Defina o ip pra teste (Ex: 127.): "
+    read -p "Range de ip: " range
+    read -p "Informe o DOMINIO: " domi
+    read -p "Porta: " port
     for w in {0..255}; do
         for q in {0..255}; do
             for i in {0..255}; do
