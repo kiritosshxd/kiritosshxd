@@ -22,7 +22,7 @@ if [[ "$resposta" = '1' ]]; then
             eval "case $try in
                  $nums\ )
                       echo -e \"\e[01;33m$ip2\e[0m | \e[01;37mIP OK - STATUS $try\e[0m\"
-                      echo "$ip2 - $try - $date">> OK.txt;;
+                      echo "$ip2 - $try - $(date)">> OK.txt;;
                    *)
                       echo -e \"$ip2 | \e[01;33mSTATUS $try\e[0m\"
            esac"
@@ -44,7 +44,7 @@ elif [[ "$resposta" = '2' ]]; then
                 eval "case $try in
                  $nums\ )
                       echo -e \"\e[01;33m$ip2\e[0m | \e[01;37mIP OK - STATUS $try\e[0m\"
-                      echo "$ip2 - $try - $date">> OK.txt;;
+                      echo "$ip2 - $try - $(date)">> OK.txt;;
                    *)
                       echo -e \"$ip2 | \e[01;33mSTATUS $try\e[0m\"
            esac"
@@ -68,7 +68,7 @@ elif [[ "$resposta" = '3' ]]; then
                     eval "case $try in
                  $nums\ )
                       echo -e \"\e[01;33m$ip2\e[0m | \e[01;37mIP OK - STATUS $try\e[0m\"
-                      echo "$ip2 - $try - $date">> OK.txt;;
+                      echo "$ip2 - $try - $(date)">> OK.txt;;
                    *)
                       echo -e \"$ip2 | \e[01;33mSTATUS $try\e[0m\"
            esac"
