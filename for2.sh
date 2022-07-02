@@ -16,7 +16,7 @@ if [[ "$resposta" = '1' ]]; then
         read -p "Range de ip: " range
         read -p "Informe o DOMINIO: " domi
         read -p "Porta: " port
-        for i in {0..255}; do
+        for i in {1..255}; do
             try=$(curl -m 3 -s -o /dev/null -w "%{http_code}" $domi -H "Upgrade: websocket" -x ${range}${i}:$port)
             ip2="${range}${i}"
             eval "case $try in
@@ -37,8 +37,8 @@ elif [[ "$resposta" = '2' ]]; then
         read -p "Range de ip: " range
         read -p "Informe o DOMINIO: " domi
         read -p "Porta: " port
-        for q in {0..255}; do
-            for i in {0..255}; do
+        for q in {1..255}; do
+            for i in {1..255}; do
                 try=$(curl -m 3 -s -o /dev/null -w "%{http_code}" $domi -H "Upgrade: websocket" -x ${range}${q}.$i:$port)
                 ip2="${range}${q}.$i"
                 eval "case $try in
@@ -60,9 +60,9 @@ elif [[ "$resposta" = '3' ]]; then
         read -p "Range de ip: " range
         read -p "Informe o DOMINIO: " domi
         read -p "Porta: " port
-        for w in {0..255}; do
-            for q in {0..255}; do
-                for i in {0..255}; do
+        for w in {1..255}; do
+            for q in {1..255}; do
+                for i in {1..255}; do
                     try=$(curl -m 3 -s -o /dev/null -w "%{http_code}" $domi -H "Upgrade: websocket" -x ${range}${w}.${q}.$i:$port)
                     ip2="${range}${w}.${q}.$i"
                     eval "case $try in
