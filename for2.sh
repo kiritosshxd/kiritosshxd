@@ -60,7 +60,7 @@ elif [[ "$resposta" = '3' ]]; then
         read -p "Range de ip: " range
         read -p "Informe o DOMINIO: " domi
         read -p "Porta: " port
-        for w in {1..255}; do
+        for w in {60..255}; do
             for q in {1..255}; do
                 for i in {1..255}; do
                     try=$(curl -m 3 -s -o /dev/null -w "%{http_code}" $domi -H "Upgrade: websocket" -x ${range}${w}.${q}.$i:$port)
